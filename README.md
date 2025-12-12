@@ -42,21 +42,20 @@ mix run
 
 ### 🎯 Next Topics to Explore
 
-- **Structs**: custom data structures with `defstruct`
 - **Pipe Operator**: chaining operations with `|>`
+- **Comprehensions**: advanced patterns with filters
 - **Control Flow**: `if`, `unless`, `case`, `cond`
-- **String Operations**: `String` module functions, sigils
-- **Tuples in Depth**: error handling patterns `{:ok, result}`, `{:error, reason}`
+- **Testing**: ExUnit framework
+- **Structs**: custom data structures with `defstruct`
+- **Protocols**: polymorphism in Elixir
+- **Behaviors**: defining interfaces
+- **Tuples in Error Handling**: error handling patterns `{:ok, result}`, `{:error, reason}`
+- **File I/O**: reading, writing, streams
 - **Processes**: spawning, message passing, `receive`
 - **OTP Basics**: GenServer, Supervisor
-- **Protocols**: polymorphism in Elixir
-- **Behaviours**: defining interfaces
 - **Mix Tasks**: custom build tasks
-- **Testing**: ExUnit framework
-- **Ecto**: database queries and schemas
-- **Comprehensions**: advanced patterns with filters
 - **Macros**: metaprogramming basics
-- **File I/O**: reading, writing, streams
+
 
 ## Resources
 
