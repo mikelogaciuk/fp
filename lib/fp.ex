@@ -156,3 +156,13 @@ receipt = %{
 
 IO.inspect("Receipt number is: #{receipt.receipt_number}")
 IO.inspect(receipt, label: "Receipt")
+IO.inspect(receipt.lines, label: "Receipt Lines")
+
+IO.puts("========Iteracja po liniach===========")
+Enum.each(receipt.lines, fn line -> IO.inspect(line) end)
+
+eggs_ln = Enum.find(receipt.lines, fn l -> l.product_name == "Eggs" end)
+IO.inspect(eggs_ln, label: "Eggs line")
+
+total_val = Enum.reduce(receipt.lines, 0, fn line, acc -> acc + line.total end)
+IO.inspect(total_val, label: "Total positions value")
