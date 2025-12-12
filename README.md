@@ -56,7 +56,6 @@ mix run
 - **Mix Tasks**: custom build tasks
 - **Macros**: metaprogramming basics
 
-
 ## Resources
 
 See [CHANGELOG.md](CHANGELOG.md) for detailed progress and examples.
