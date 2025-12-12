@@ -155,3 +155,4 @@ receipt = %{
 }
 
 IO.inspect("Receipt number is: #{receipt.receipt_number}")
+IO.inspect(receipt, label: "Receipt")
