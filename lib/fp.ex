@@ -124,27 +124,30 @@ IO.inspect(resources)
 # Mapy (słowniki)
 receipt = %{
   store: 1,
-  receipt_id: 131,
-  receipt_number: 250_101,
+  sale_id: 131,
+  sale_number: 250_101,
   date: ~D[2025-12-12],
   lines: [
     %{
       line_number: 1,
-      product_name: "Milk",
+      product: "Milk",
+      sku: "XMA2193",
       quantity: 2,
       unit_price: 3.50,
       total: 7.00
     },
     %{
       line_number: 2,
-      product_name: "Bread",
+      product: "Bread",
+      sku: "213MD",
       quantity: 1,
       unit_price: 2.50,
       total: 2.50
     },
     %{
       line_number: 3,
-      product_name: "Eggs",
+      product: "Eggs",
+      sku: "11AAXFR23",
       quantity: 3,
       unit_price: 5.00,
       total: 15.00
@@ -154,15 +157,17 @@ receipt = %{
   payment_method: :card
 }
 
-IO.inspect("Receipt number is: #{receipt.receipt_number}")
+IO.inspect("Receipt number is: #{receipt.sale_number}")
 IO.inspect(receipt, label: "Receipt")
-IO.inspect(receipt.lines, label: "Receipt Lines")
 
-IO.puts("========Iteracja po liniach===========")
+IO.inspect(receipt.lines, label: "Receipt Lines")
 Enum.each(receipt.lines, fn line -> IO.inspect(line) end)
 
-eggs_ln = Enum.find(receipt.lines, fn l -> l.product_name == "Eggs" end)
+eggs_ln = Enum.find(receipt.lines, fn l -> l.product == "Eggs" end)
 IO.inspect(eggs_ln, label: "Eggs line")
 
 total_val = Enum.reduce(receipt.lines, 0, fn line, acc -> acc + line.total end)
 IO.inspect(total_val, label: "Total positions value")
+
+any_ruby? = Enum.any?(receipt.lines, fn r -> r == "Ruby" end)
+IO.inspect(any_ruby?, label: "Any Ruby?")
