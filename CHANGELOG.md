@@ -2,7 +2,60 @@
 
 All notable changes and learning progress for this Elixir syntax research project.
 
-## [Current Progress] - 2025-12-12
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## [Unreleased]
+
+### Planned
+- Testing with ExUnit
+- Structs and Protocols
+- OTP Basics (GenServer, Supervisor)
+- File I/O operations
+- Process management
+
+## [0.3.0] - 2025-12-15
+
+### Added
+- Pipe operator examples with data transformation
+- Control flow statements: `if`, `unless`, `case`, `cond`
+- Guards in functions and anonymous functions
+- Custom exception handling with `ZeroTotalError`
+- Error tuples pattern: `{:ok, value}` and `{:error, reason}`
+- Advanced Enum operations: `reduce`, `find`, `any?`, `filter`, `join`
+- String operations pipeline example
+- Temperature checker with `cond`
+- `GuardsExample` module
+
+### Changed
+- Translated all comments from Polish to English
+- Updated documentation to reflect all implemented topics
+
+## [0.2.0] - 2025-12-12
+
+### Added
+- Map operations with nested structures
+- Receipt/invoice example with line items
+- Keyword lists for function parameters
+- List comprehensions with ranges
+- Enum module exploration
+- Docker configuration example
+- Date literals with `~D[YYYY-MM-DD]`
+
+## [0.1.0] - 2025-12-10
+
+### Added
+- Initial project setup with Mix
+- Module basics with `defmodule`
+- Function documentation with `@doc` and `@moduledoc`
+- Type specifications with `@spec`
+- Recursive `count_down/1` function
+- Pattern matching examples
+- Basic data types exploration
+- List operations (head/tail, concatenation)
+- ASCII character codes
+- Range syntax
+
+## [Current Progress] - 2025-12-15
 
 ### Covered Topics
 
@@ -56,8 +109,53 @@ All notable changes and learning progress for this Elixir syntax research projec
 - Extracting specific elements from lists
 - Conditional extraction with comprehensions
 
+#### Pipe Operator
+- Chaining operations with `|>`
+- Data transformation pipelines
+- Text processing example: upcase → split → reverse → join
+
+#### Control Flow
+- `if/do/end` statements with boolean expressions
+- `unless` for negative conditions (noted as deprecated)
+- `case` statements with pattern matching and guards
+- `cond` for multiple conditions (alternative to nested ifs)
+
+#### Guards
+- Using guards in function definitions with `when`
+- Guards in anonymous functions
+- Multiple guard clauses for different conditions
+- `GuardsExample` module demonstrating guard patterns
+
+#### Error Handling
+- Custom exceptions with `defexception`
+- `ZeroTotalError` custom exception module
+- Error tuples: `{:ok, value}` and `{:error, reason}`
+- Using `raise` for exceptions
+- Pattern matching on error results
+
+#### Advanced Enumeration
+- `Enum.reduce/3` for aggregation
+- `Enum.find/2` for searching
+- `Enum.any?/2` for existence checks
+- `Enum.filter/2` for filtering collections
+- `Enum.join/2` for string concatenation
+- Combining multiple `Enum` operations with pipes
+
+#### String Operations
+- `String.upcase/1` for case conversion
+- `String.split/1` for tokenization
+- `String.reverse/1` for reversing strings
+- Combining string operations in pipelines
+
 ### Code Examples Implemented
 - `count_down/1` function with recursion and pattern matching
 - Type exploration with various data structures
 - Docker configuration example with keyword lists
-- Receipt/invoice structure with nested maps
+- Receipt/invoice structure with nested maps and line items
+- Receipt total calculation using `Enum.reduce`
+- Custom error handling with `check_total` functions
+- `ZeroTotalError` custom exception module
+- Text processing pipeline with pipes
+- Temperature checker with `cond`
+- `GuardsExample` module with guard demonstrations
+- List comprehensions with filtering (values > 8000)
