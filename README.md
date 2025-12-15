@@ -29,34 +29,36 @@ mix run
 
 ### ✅ Completed
 
-- **Module Basics**: `defmodule`, documentation, type specs
-- **Functions & Recursion**: pattern matching, guards, recursive implementations
-- **Data Types**: integers, floats, atoms, tuples, lists, maps
-- **List Operations**: head/tail destructuring, concatenation, ASCII codes
-- **Ranges & Enumeration**: `Enum` module, list comprehensions
-- **Keyword Lists**: function options, nested structures
-- **Maps**: creation, access, nested maps, date literals
-- **Pattern Matching**: destructuring, conditional extraction
+- **Module Basics**: `defmodule`, documentation with `@moduledoc` and `@doc`, type specs with `@spec`
+- **Functions & Recursion**: pattern matching, guards with `when`, recursive implementations
+- **Data Types**: integers (decimal, hex), floats, atoms, tuples, lists, maps
+- **List Operations**: head/tail destructuring, concatenation with `++`, ASCII codes with `?char`
+- **Ranges & Enumeration**: ranges `1..5`, `Enum.map`, `Enum.each`, `Enum.find`, `Enum.reduce`, `Enum.any?`, `Enum.filter`, `Enum.join`
+- **Keyword Lists**: function options, nested structures, accessing with `opts[:key]`
+- **Maps**: creation, dot notation access, nested maps with line items, date literals `~D[YYYY-MM-DD]`
+- **Pattern Matching**: destructuring in lists and function parameters
+- **Pipe Operator**: chaining operations with `|>`, transforming data through multiple steps
+- **Control Flow**: `if/do`, `unless`, `case` with guards, `cond` for multiple conditions
+- **Guards**: in function definitions and anonymous functions
+- **Error Handling**: custom exceptions with `defexception`, error tuples `{:ok, value}` and `{:error, reason}`
+- **Comprehensions**: `for` with filters and collections, extracting values from keyword lists
+- **String Operations**: `String.upcase`, `String.split`, `String.reverse`
 
 ## Roadmap
 
 ### 🎯 Next Topics to Explore
 
+- **Testing**: ExUnit framework, test cases, assertions
 - **Structs**: custom data structures with `defstruct`
-- **Pipe Operator**: chaining operations with `|>`
-- **Control Flow**: `if`, `unless`, `case`, `cond`
-- **String Operations**: `String` module functions, sigils
-- **Tuples in Depth**: error handling patterns `{:ok, result}`, `{:error, reason}`
-- **Processes**: spawning, message passing, `receive`
-- **OTP Basics**: GenServer, Supervisor
 - **Protocols**: polymorphism in Elixir
-- **Behaviours**: defining interfaces
-- **Mix Tasks**: custom build tasks
-- **Testing**: ExUnit framework
-- **Ecto**: database queries and schemas
-- **Comprehensions**: advanced patterns with filters
-- **Macros**: metaprogramming basics
+- **Behaviors**: defining interfaces with `@callback`
 - **File I/O**: reading, writing, streams
+- **Processes**: spawning, message passing, `receive`
+- **OTP Basics**: GenServer, Supervisor, Application
+- **Mix Tasks**: custom build tasks
+- **Macros**: metaprogramming basics
+- **With Statement**: elegant error handling
+- **Agents & Tasks**: simple state management and async operations
 
 ## Resources
 
