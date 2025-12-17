@@ -11,6 +11,23 @@ defmodule Fp.Runner do
   alias Fp.Structs.User.DefaultValueAnother
   alias Fp.Structs.User.EnforcedKeys
 
+  @doc """
+  Hello world!
+
+  ## Examples
+
+      iex> Fp.Runner.hello()
+      :world
+
+  """
+  def hello do
+    :world
+  end
+
+  @doc """
+  Main examples runner.
+  """
+  @spec run() :: any()
   def run do
     # Countdown examples
     IO.inspect(Countdown.count_down())
