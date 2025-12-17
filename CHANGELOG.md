@@ -7,12 +7,41 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ## [Unreleased]
 
 ### Planned
+- Further clean-up of existing examples and organization
 - Testing with ExUnit
 - Protocols and custom implementations
-- OTP Basics (GenServer, Supervisor)
+- Mix tasks
+- OTP Basics (Agents and Tasks, GenServer, Supervisor)
 - File I/O operations
 - Process management
-- Agents and Tasks
+- Macros and metaprogramming
+- `with` statement for error handling
+
+## [0.5.0] - 2025-12-17
+
+### Added
+- Multi-file architecture with separate module files
+- GitHub Actions workflow for automated testing (`.github/workflows/test.yml`)
+- Consolidated `Fp.Runner` module as main entry point in `lib/fp.ex`
+- Separate module files:
+  - `lib/countdown.ex` for `Fp.Countdown`
+  - `lib/guards_example.ex` for `Fp.GuardsExample`
+  - `lib/zero_total_error.ex` for `Fp.ZeroTotalError`
+  - `lib/module/core/example.ex` for `Fp.Module.Core.Example`
+  - `lib/structs/user/*.ex` for all struct definitions
+
+### Changed
+- Renamed `Fp.Struct.*` modules to `Fp.Structs.*` for consistency
+- Moved struct directory from `lib/struct/` to `lib/structs/`
+- Consolidated runner code into `Fp.Runner.run()` in `lib/fp.ex`
+- Removed separate `lib/structs/modules/runner.ex` file
+- Updated all module references and aliases to use new naming
+
+### Improved
+- Completed documentation for `hello/0` function with proper doctest example
+- Cleaned up README.md by removing duplicate roadmap entries
+- Cleaned up CHANGELOG.md by removing redundant "Current Progress" section
+- Better project organization following multi-file pattern
 
 ## [0.4.0] - 2025-12-17
 
@@ -82,142 +111,3 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - List operations (head/tail, concatenation)
 - ASCII character codes
 - Range syntax
-
-## [Current Progress] - 2025-12-15
-
-### Covered Topics
-
-#### Module Basics
-- Module definition with `defmodule`
-- Module documentation with `@moduledoc`
-- Function documentation with `@doc`
-- Type specifications with `@spec`
-
-#### Functions & Recursion
-- Function definitions with `def`
-- Pattern matching in function parameters
-- Guard clauses with `when`
-- Recursive function implementation (countdown example)
-- Anonymous functions (lambdas) with `fn`
-
-#### Data Types
-- **Integers**: decimal and hexadecimal notation
-- **Floats**: decimal numbers
-- **Atoms**: symbolic constants (`:atom`)
-- **Tuples**: fixed-size collections `{1, 2, 3}`
-- **Lists**: dynamic collections `[1, 2, 3]`
-- **Maps**: key-value pairs `%{key: value}`
-
-#### List Operations
-- Head and tail destructuring `[head | tail]`
-- Pattern matching in destructuring
-- List concatenation with `++`
-- ASCII character codes with `?char`
-- Charlist representation
-
-#### Ranges & Enumeration
-- Range syntax `1..5`
-- `Enum.map/2` for transformations
-- List comprehensions with `for`
-
-#### Keyword Lists
-- Syntax: `[key: value, key2: value2]`
-- Usage as function options
-- Accessing values with `opts[:key]`
-- Nested keyword lists
-
-#### Maps & Structs
-- Map creation with `%{}`
-- Accessing map values with `.` notation
-- Nested maps (receipt example with lines)
-- Date literals with `~D[YYYY-MM-DD]`
-
-#### Advanced Pattern Matching
-- Destructuring in function parameters
-- Extracting specific elements from lists
-- Conditional extraction with comprehensions
-
-#### Pipe Operator
-- Chaining operations with `|>`
-- Data transformation pipelines
-- Text processing example: upcase → split → reverse → join
-
-#### Control Flow
-- `if/do/end` statements with boolean expressions
-- `unless` for negative conditions (noted as deprecated)
-- `case` statements with pattern matching and guards
-- `cond` for multiple conditions (alternative to nested ifs)
-
-#### Guards
-- Using guards in function definitions with `when`
-- Guards in anonymous functions
-- Multiple guard clauses for different conditions
-- `GuardsExample` module demonstrating guard patterns
-
-#### Error Handling
-- Custom exceptions with `defexception`
-- `ZeroTotalError` custom exception module
-- Error tuples: `{:ok, value}` and `{:error, reason}`
-- Using `raise` for exceptions
-- Pattern matching on error results
-
-#### Advanced Enumeration
-- `Enum.reduce/3` for aggregation
-- `Enum.find/2` for searching
-- `Enum.any?/2` for existence checks
-- `Enum.filter/2` for filtering collections
-- `Enum.join/2` for string concatenation
-- Combining multiple `Enum` operations with pipes
-
-#### String Operations
-- `String.upcase/1` for case conversion
-- `String.split/1` for tokenization
-- `String.reverse/1` for reversing strings
-- Combining string operations in pipelines
-
-#### Modules & Named Functions
-- Nested module definitions (`Fp.Module.Core.Example`)
-- Named function definitions with `def`
-- Module documentation with `@moduledoc`
-- Module aliases with `alias` keyword
-- Organizing related functionality in modules
-
-#### Structs
-- Struct definition with `defstruct`
-- Empty struct fields (`:field` or `field: nil`)
-- Default values for struct fields
-- Enforcing required keys with `@enforce_keys`
-- Type specifications for structs with `@type t`
-- Union types in type specs (`:atom1 | :atom2 | :atom3`)
-- Creating struct instances with `%ModuleName{}`
-- Updating structs with `%{struct | field: new_value}` syntax
-- Accessing struct fields with dot notation
-- Pattern matching on structs
-
-#### Comprehensions (Extended)
-- Multiple generators in comprehensions
-- Creating tuples with comprehensions
-- Filtering comprehension results
-- Extracting values from keyword lists
-
-### Code Examples Implemented
-- `count_down/1` function with recursion and pattern matching
-- Type exploration with various data structures
-- Docker configuration example with keyword lists
-- Receipt/invoice structure with nested maps and line items
-- Receipt total calculation using `Enum.reduce`
-- Custom error handling with `check_total` functions
-- `ZeroTotalError` custom exception module
-- Text processing pipeline with pipes
-- Temperature checker with `cond`
-- `GuardsExample` module with guard demonstrations
-- List comprehensions with filtering (values > 8000)
-- Tuple comprehensions with multiple generators
-- `Fp.Module.Core.Example` with named function `fly/0`
-- `Fp.Struct.User.Empty` - empty struct example
-- `Fp.Struct.User.DefaultValue` - struct with default values
-- `Fp.Struct.User.DefaultValueAnother` - mixed fields struct
-- `Fp.Struct.User.EnforcedKeys` - typed struct with required fields
-- `Fp.Structs.Modules.Runner` - demonstration module for all struct patterns
-- Struct creation, update, and field access patterns
-- Using `:rand.uniform/1` for random numbers

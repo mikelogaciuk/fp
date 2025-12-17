@@ -22,7 +22,7 @@ This code is for re-learning and re-searching Elixir syntax purposes. A personal
 To run the code:
 
 ```shell
-mix run
+mix run .\lib\fp.ex
 ```
 
 ## Topics Covered
@@ -51,20 +51,18 @@ mix run
 
 ### 🎯 Next Topics to Explore
 
+- **Further clean-up** of existing examples and organization
+- **Testing**: ExUnit framework, test cases, assertions
 - **Protocols**: polymorphism, implementing protocols for custom types
 - **Behaviors**: defining interfaces with `@callback`, implementing behaviours
-
-- **Testing**: ExUnit framework, test cases, assertions
-- **Structs**: custom data structures with `defstruct`
-- **Protocols**: polymorphism in Elixir
-- **Behaviors**: defining interfaces with `@callback`
 - **File I/O**: reading, writing, streams
 - **Processes**: spawning, message passing, `receive`
+- **Agents & Tasks**: simple state management and async
 - **OTP Basics**: GenServer, Supervisor, Application
 - **Mix Tasks**: custom build tasks
 - **Macros**: metaprogramming basics
 - **With Statement**: elegant error handling
-- **Agents & Tasks**: simple state management and async operations
+operations
 
 ## Resources
 
