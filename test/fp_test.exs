@@ -1,8 +1,8 @@
 defmodule FpTest do
   use ExUnit.Case
-  doctest Fp
+  doctest Fp.Runner
 
   test "greets the world" do
-    assert Fp.hello() == :world
+    assert Fp.Runner.hello() == :world
   end
 end
