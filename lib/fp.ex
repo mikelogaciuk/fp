@@ -37,9 +37,9 @@ IO.inspect(Fp.count_down())
 IO.inspect(Fp.count_down(-3))
 IO.inspect(Fp.count_down(10))
 
-## ----------------------------------------------------------------------------
-## Basic data types
-## ----------------------------------------------------------------------------
+# Basic data types
+#
+#
 
 types_list = [
   # int
@@ -51,7 +51,7 @@ types_list = [
   # atom whose value is also its name
   :hi,
   # tuple
-  {1, 4, 6},
+  {1, 4, 6, 44, 55},
   # list
   [3, 4, [5]]
 ]
@@ -182,7 +182,7 @@ check_total = fn value ->
   end
 end
 
-defmodule ZeroTotalError do
+defmodule Fp.ZeroTotalError do
   defexception message: "Total value can not be zero"
 end
 
@@ -259,13 +259,13 @@ end
 
 IO.inspect(guard_in_lambda_fn.(0))
 
-defmodule GuardsExample do
+defmodule Fp.GuardsExample do
   def guarded_func(x) when x > 0, do: "Booooo, should be 0 or worse"
   def guarded_func(x) when x < 0, do: "That's more I like it"
   def guarded_func(0), do: "Ideally..."
 end
 
-IO.inspect(GuardsExample.guarded_func(0))
+IO.inspect(Fp.GuardsExample.guarded_func(0))
 
 # Comprehensions
 #
@@ -280,3 +280,93 @@ list_expr
 |> Enum.filter(fn elem -> elem > 8000 end)
 |> Enum.join(", ")
 |> IO.inspect(label: "Values higher than 8000 are: ")
+
+# You can also do something like this:
+tuple_comp_create = for x <- [:foo, :bar, :daz], y <- [3, 6], do: {x, y}
+IO.inspect(tuple_comp_create, label: "Tuple created with comprehension")
+
+# Modules, named functions and structs
+#
+# Structs are like maps but they do not inherit some protocols/behaviours.
+# They are wrapped inside modules, where they also can have various methods
+defmodule Fp.Module.Core.Example do
+  @moduledoc """
+  Module documentation
+  """
+
+  @doc """
+  Named function documentation
+  """
+  def fly do
+    for n <- 5..10, do: n * :rand.uniform(100)
+  end
+end
+
+defmodule Fp.Struct.User.Empty do
+  defstruct id: nil, company: nil
+end
+
+defmodule Fp.Struct.User.DefaultValue do
+  defstruct name: "Alice", age: 18
+end
+
+defmodule Fp.Struct.User.DefaultValueAnother do
+  defstruct [:id, name: nil]
+end
+
+defmodule Fp.Struct.User.EnforcedKeys do
+  @moduledoc """
+  Example of module/struct with enforced keys and "typing"
+  """
+  @enforce_keys [:id]
+  @type t :: %__MODULE__{
+          id: pos_integer(),
+          name: String.t() | nil,
+          company: :aws | :google | :microsoft
+        }
+  defstruct [:id, name: nil, company: :aws]
+end
+
+# I can't use structs directly in a file that defines them.
+# So they are needed to be wrapped in another module to run them...
+defmodule Fp.Structs.Modules.Runner do
+  @moduledoc """
+  Runner for structs and modules with named functions etc.
+
+  `Note`:
+    Structs intentionally don't implement Enumerable to distinguish them from regular maps.
+    Use `Map.from_struct/1` when you need to enumerate over struct fields.
+  """
+
+  alias Fp.Module.Core.Example
+  alias Fp.Struct.User.Empty
+  alias Fp.Struct.User.DefaultValue
+  alias Fp.Struct.User.DefaultValueAnother
+  alias Fp.Struct.User.EnforcedKeys
+
+  def run do
+    IO.inspect(Example.fly(), label: "Simple module with named function, fly(): ")
+
+    empty_x = %Empty{}
+    IO.inspect(empty_x)
+
+    empty_y = %Empty{id: 123, company: :aws}
+    IO.inspect(empty_y)
+
+    alice = %DefaultValue{}
+    bob = %DefaultValue{name: "Bob", age: 666}
+    IO.inspect({alice, bob})
+
+    max = %{bob | name: "Max"}
+    IO.inspect(max.name, label: "Name: ")
+
+    # name will stay empty
+    default_val_a = %DefaultValueAnother{:id => 89}
+    IO.inspect(default_val_a, label: "Another way of doing default values: ")
+
+    default_enforced_keys = %EnforcedKeys{:id => :rand.uniform(300), company: :aws}
+    IO.inspect(default_enforced_keys, label: "Enforced keys: ")
+  end
+end
+
+Fp.Structs.Modules.Runner.run()

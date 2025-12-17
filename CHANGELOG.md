@@ -8,10 +8,38 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Planned
 - Testing with ExUnit
-- Structs and Protocols
+- Protocols and custom implementations
 - OTP Basics (GenServer, Supervisor)
 - File I/O operations
 - Process management
+- Agents and Tasks
+
+## [0.4.0] - 2025-12-17
+
+### Added
+- Nested module structures (`Fp.Module.Core.Example`)
+- Named functions in modules with `def`
+- Struct definitions with `defstruct`
+- Multiple struct pattern examples:
+  - Empty structs with nil defaults (`Fp.Struct.User.Empty`)
+  - Structs with default values (`Fp.Struct.User.DefaultValue`)
+  - Mixed default and required fields (`Fp.Struct.User.DefaultValueAnother`)
+  - Enforced keys with `@enforce_keys` (`Fp.Struct.User.EnforcedKeys`)
+- Type specifications for structs with `@type`
+- Union types in struct specs (`:aws | :google | :microsoft`)
+- Module aliases with `alias` for cleaner code
+- Struct operations: creation, updating with `|`, field access
+- `Fp.Structs.Modules.Runner` module for demonstrating struct usage
+- Tuple comprehensions with multiple generators
+- Random number generation with `:rand.uniform/1`
+
+### Documented
+- Note about structs not implementing Enumerable protocol
+- Usage of `Map.from_struct/1` for enumeration
+- Pattern for organizing structs and their usage modules separately
+
+### Changed
+- Extended comprehension examples with tuple creation
 
 ## [0.3.0] - 2025-12-15
 
@@ -147,6 +175,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `String.reverse/1` for reversing strings
 - Combining string operations in pipelines
 
+#### Modules & Named Functions
+- Nested module definitions (`Fp.Module.Core.Example`)
+- Named function definitions with `def`
+- Module documentation with `@moduledoc`
+- Module aliases with `alias` keyword
+- Organizing related functionality in modules
+
+#### Structs
+- Struct definition with `defstruct`
+- Empty struct fields (`:field` or `field: nil`)
+- Default values for struct fields
+- Enforcing required keys with `@enforce_keys`
+- Type specifications for structs with `@type t`
+- Union types in type specs (`:atom1 | :atom2 | :atom3`)
+- Creating struct instances with `%ModuleName{}`
+- Updating structs with `%{struct | field: new_value}` syntax
+- Accessing struct fields with dot notation
+- Pattern matching on structs
+
+#### Comprehensions (Extended)
+- Multiple generators in comprehensions
+- Creating tuples with comprehensions
+- Filtering comprehension results
+- Extracting values from keyword lists
+
 ### Code Examples Implemented
 - `count_down/1` function with recursion and pattern matching
 - Type exploration with various data structures
@@ -159,3 +212,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Temperature checker with `cond`
 - `GuardsExample` module with guard demonstrations
 - List comprehensions with filtering (values > 8000)
+- Tuple comprehensions with multiple generators
+- `Fp.Module.Core.Example` with named function `fly/0`
+- `Fp.Struct.User.Empty` - empty struct example
+- `Fp.Struct.User.DefaultValue` - struct with default values
+- `Fp.Struct.User.DefaultValueAnother` - mixed fields struct
+- `Fp.Struct.User.EnforcedKeys` - typed struct with required fields
+- `Fp.Structs.Modules.Runner` - demonstration module for all struct patterns
+- Struct creation, update, and field access patterns
+- Using `:rand.uniform/1` for random numbers
