@@ -91,6 +91,7 @@ defmodule Fp.Runner do
     # Ranges and mapping with lambda
     some_range = 1..5
     Enum.map(some_range, fn x -> IO.inspect(x) end)
+    Enum.map(6..40, fn f -> IO.inspect(f) end)
 
     # Lists again
     #
